@@ -18,8 +18,8 @@ Route::get('posts/{post}/comments', 'CommentController@index')->name('comments.i
 Route::post('posts/{post}/comments', 'CommentController@store')->middleware('auth')->name('comments.store');
 
 //Replies
-Route::get('comments/{comment}/replies', 'ReplyController@index')->name('comments.index');
-Route::post('comments/{comment}/replies', 'ReplyController@store')->middleware('auth')->name('comments.store');
+Route::get('comments/{comment}/replies', 'ReplyController@index')->name('replies.index');
+Route::post('comments/{comment}/replies', 'ReplyController@store')->middleware('auth')->name('replies.store');
 
 
 Auth::routes();
