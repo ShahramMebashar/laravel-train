@@ -51,4 +51,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reply::class);
     }
+
+    public function newPost($attributes)
+    {
+        return $this->posts()->create($attributes);
+    }
+
+    public function path()
+    {
+        return 'users/' . $this->id;
+    }
 }

@@ -22,4 +22,14 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+    public function addReply($attributes)
+    {
+        return $this->replies()->create($attributes);
+    }
+
+    public function path()
+    {
+        return 'comments/' . $this->id;
+    }
 }

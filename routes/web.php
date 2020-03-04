@@ -2,25 +2,24 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+//Home or generak
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Posts
+Route::get('posts', 'PostController@index')->name('posts.index');
+Route::get('posts/{post}', 'PostController@show')->name('posts.show');
+Route::get('posts/create', 'PostController@create')->name('posts.create');
+Route::post('posts', 'PostController@store')->middleware('auth')->name('posts.store');
+
+//Comments
+Route::get('posts/{post}/comments', 'CommentController@index')->name('comments.index');
+Route::post('posts/{post}/comments', 'CommentController@store')->middleware('auth')->name('comments.store');
+
+//Replies
+Route::get('comments/{comment}/replies', 'ReplyController@index')->name('comments.index');
+Route::post('comments/{comment}/replies', 'ReplyController@store')->middleware('auth')->name('comments.store');
+
+
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
