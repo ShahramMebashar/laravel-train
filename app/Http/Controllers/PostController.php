@@ -14,10 +14,11 @@ class PostController extends Controller
 
     public function show(Request $request, Post $post)
     {
+        auth()->loginUsingId(2);
         $post->addView($request);
-        
+
         session(['last_visit' => now(), 'user_ip' => $request->ip() ]);
-        
+
         return view('posts.show', compact('post'));
     }
 

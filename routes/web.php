@@ -8,18 +8,18 @@ Route::get('/', function () {
 });
 
 //Posts
-Route::get('posts', 'PostController@index')->name('posts.index');
-Route::get('posts/{post}', 'PostController@show')->name('posts.show');
-Route::get('posts/create', 'PostController@create')->name('posts.create');
-Route::post('posts', 'PostController@store')->middleware('auth')->name('posts.store');
+Route::get('posts', 'PostController@index')->name('post.index');
+Route::get('posts/{post}', 'PostController@show')->name('post.show');
+Route::get('posts/create', 'PostController@create')->name('post.create');
+Route::post('posts', 'PostController@store')->middleware('auth')->name('post.store');
 
 //Comments
-Route::get('posts/{post}/comments', 'CommentController@index')->name('comments.index');
-Route::post('posts/{post}/comments', 'CommentController@store')->middleware('auth')->name('comments.store');
+Route::get('posts/{post}/comments', 'CommentController@index')->name('comment.index');
+Route::post('posts/{post}/comments', 'CommentController@store')->middleware('auth')->name('comment.store');
 
 //Replies
-Route::get('comments/{comment}/replies', 'ReplyController@index')->name('replies.index');
-Route::post('comments/{comment}/replies', 'ReplyController@store')->middleware('auth')->name('replies.store');
+Route::get('comments/{comment}/replies', 'ReplyController@index')->name('reply.index');
+Route::post('comments/{comment}/replies', 'ReplyController@store')->middleware('auth')->name('reply.store');
 
 
 Auth::routes();

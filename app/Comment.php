@@ -3,10 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Comment extends Model
 {
     protected $guarded = [];
+
+    protected $dates = [
+        'created_at'
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope(function ($query) {
+            $query->latest();
+        });
+    }
 
     public function owner()
     {
@@ -31,5 +44,10 @@ class Comment extends Model
     public function path()
     {
         return 'comments/' . $this->id;
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->diffForHumans();
     }
 }
