@@ -16,14 +16,18 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-gray-200">
+<body class="bg-gray-200 leading-normal antialiased text-gray-700">
     <div id="app">
         <nav class="nav bg-white shadow  px-4">
-            <div class="container flex mx-auto">
-                <a class="navbar-brand mr-auto py-4" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+            <div class="container flex mx-auto items-center">
+                <a class="navbar-brand mr-auto py-4 font-bold" href="{{ url('/') }}">
+                    {{ config('app.name', 'Training') }}
                 </a>
-
+                <ul class="main-navbar ml-12 flex mr-auto flex-1">
+                    <li class="nav-item">
+                        <a class="py-3" href="/posts">Posts</a>
+                    </li>
+                </ul>
                 <div class="ml-auto">
                     <!-- Right Side Of Navbar -->
                     <ul class="flex">

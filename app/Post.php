@@ -26,4 +26,11 @@ class Post extends Model
     {
         return 'posts/' . $this->id;
     }
+    public function addView($request = null) {
+        
+        if ( $request && $request->session()->has('last_visit')) return null;
+        
+        return $this->increment('views');
+    }
+
 }

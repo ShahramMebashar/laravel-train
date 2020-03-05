@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\App;
 $factory->define(Post::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
+        'body' => $faker->text(800),
         'user_id' => factory(User::class)
     ];
 });

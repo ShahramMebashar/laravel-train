@@ -16,7 +16,9 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->text('body');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('views')->nullable()->default(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
@@ -30,6 +32,6 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('posts');
-        Schema::dropForeign('user_id');
+        //Schema::dropForeign('user_id');
     }
 }

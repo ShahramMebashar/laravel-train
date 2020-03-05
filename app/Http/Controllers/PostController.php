@@ -9,11 +9,15 @@ class PostController extends Controller
 {
     public function index()
     {
-        return views('posts.index', [ 'posts' => Post::paginate(15) ]);
+        return view('posts.index', [ 'posts' => Post::paginate(5) ]);
     }
 
-    public function show(Post $post)
+    public function show(Request $request, Post $post)
     {
+        $post->addView($request);
+        
+        session(['last_visit' => now(), 'user_ip' => $request->ip() ]);
+        
         return view('posts.show', compact('post'));
     }
 
